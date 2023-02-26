@@ -11,6 +11,7 @@ redirect_from:
 I am a master stduent at [Korea University](https://kuaicv.com/).
 - One paper accepted to ECCV 2022.
 - One paper accepted to CVPR 2022.
+- Two paper accepte dto NeurIPS Workshop 2021. 
 
 
 Research Interest
