@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+CV link.
+
 Education
 ======
 * B.S. in University of Seoul (Computer Science), 2016
