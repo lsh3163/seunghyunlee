@@ -6,9 +6,8 @@
   <title>Seung Hyun Lee - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    /* Enable smooth scrolling */
+    /* 기본 스타일 */
     html { scroll-behavior: smooth; }
-    /* Basic Reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
       font-family: 'Roboto', sans-serif; 
@@ -21,30 +20,30 @@
     a { text-decoration: none; transition: color 0.3s ease; }
     a:hover { color: #2962ff; }
     
-    /* Fixed Physics Background Canvas */
+    /* 물리 효과 캔버스 (모래 쌓기 효과) */
     #physics-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* So that clicks pass through */
+      pointer-events: none;
       z-index: -1;
     }
     
-    /* Improved Left-Aligned Sticky Navigation Bar */
+    /* 네비게이션 바 */
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       padding: 8px 20px;
     }
     nav .container { 
       display: flex; 
       align-items: center; 
-      justify-content: flex-start; /* Left aligned container */
+      justify-content: flex-start;
     }
     nav .logo {
       font-weight: 700;
@@ -57,7 +56,6 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      justify-content: flex-start; /* Left aligned links */
     }
     nav ul li { margin: 0 15px; }
     nav ul li a {
@@ -83,12 +81,19 @@
     /* Container */
     .container { width: 90%; max-width: 1200px; margin: auto; }
     
-    /* Profile Section */
+    /* About Section - 원래의 프로필 레이아웃으로 복원 */
+    #about.section {
+      background: #fff;
+      margin: 20px 0;
+      padding: 40px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
     .profile { 
       display: flex; 
       flex-wrap: wrap; 
       align-items: center; 
-      margin: 40px 0; 
+      margin: 40px 0;  /* 원래대로 40px 여백 */
     }
     .profile-img { flex: 1; text-align: center; }
     .profile-img img {
@@ -96,20 +101,9 @@
       height: 200px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .profile-info { flex: 2; padding: 20px; }
-    .profile-info h2 { 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 2rem; 
-      margin-bottom: 10px; 
-    }
-    .profile-info h3 { 
-      font-weight: 400; 
-      color: #666; 
-      margin-bottom: 20px; 
-    }
-    .profile-info p { margin-bottom: 15px; }
     
     /* Social Links */
     .social-links { margin-top: 15px; }
@@ -120,20 +114,8 @@
     }
     .social-links a:hover { color: #1c54b2; }
     
-    /* Affiliation Badges */
-    .affiliation-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .affiliation-badge.google { background-color: #4285F4; }
-    .affiliation-badge.korea { background-color: #db3236; }
-    
-    /* Section Cards */
-    .section {
+    /* Publications Section */
+    .section { 
       background: #fff;
       margin: 20px 0;
       padding: 40px 20px;
@@ -143,30 +125,35 @@
     .section h1, .section h3 { margin-bottom: 20px; }
     .section ul { list-style: none; }
     .section ul li {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       border-bottom: 1px solid #eee;
-      padding-bottom: 15px;
+      padding-bottom: 10px;
     }
     .section ul li p { margin-bottom: 8px; }
     
-    /* Education Section */
-    #education ul { list-style: none; }
-    #education ul li {
-      margin-bottom: 15px;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+    /* 인라인 링크 아이콘 */
+    .pub-links {
+      display: inline;
+      margin-left: 10px;
     }
-    #education ul li p { margin: 4px 0; }
+    .pub-links a {
+      display: inline;
+      margin-right: 10px;
+    }
+    /* 기울임체 텍스트 (affiliation) */
+    .affiliation-text {
+      font-style: italic;
+      margin-left: 10px;
+    }
     
     /* Footer */
     footer { 
       text-align: center; 
-      padding: 20px; 
-      font-size: 0.9rem; 
-      color: #666; 
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
     }
     
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .profile { flex-direction: column; text-align: center; }
       .profile-info { padding: 20px 0; }
@@ -175,12 +162,11 @@
       nav ul li { margin: 10px 0; }
     }
   </style>
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome (아이콘용) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  
-  <!-- Physics Background Canvas -->
+  <!-- 모래 쌓기 효과를 위한 캔버스 -->
   <canvas id="physics-canvas"></canvas>
   
   <nav>
@@ -188,7 +174,6 @@
       <div class="logo">Seung Hyun Lee</div>
       <ul>
         <li><a href="#about">Home</a></li>
-        <li><a href="#education">Education</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#awards">Awards &amp; Honors</a></li>
         <li><a href="#activities">Activities</a></li>
@@ -197,7 +182,7 @@
   </nav>
   
   <div class="container">
-    <!-- About Section -->
+    <!-- About Section (프로필 레이아웃 원래대로) -->
     <section id="about" class="section">
       <div class="profile">
         <div class="profile-img">
@@ -214,53 +199,17 @@
             I worked as a Google Student Researcher, exploring ways to improve image generation and cropping with measurable quality signals.
           </p>
           <p>
-            My research goal is to develop a physically understandable foundation model in unsupervised manner. Feel free to reach out to chat more about this.
+            My research goal is to develop a physically understandable foundation model in an unsupervised manner. Feel free to reach out to chat more about this.
           </p>
           <p><strong>Contact:</strong> seungle [at] umich [dot] edu | easter3163 [at] korea [dot] ac [dot] kr</p>
           <div class="social-links">
-            <a href="cv/seunghyun_cv.pdf" title="CV" target="_blank" rel="noopener">
-              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-            </a>
-            <a href="https://scholar.google.com/citations?user=42zjqSUAAAAJ&hl=en" title="Google Scholar" target="_blank" rel="noopener">
-              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            </a>
-            <a href="https://github.com/lsh3163" target="_blank" rel="noopener">
-              <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener">
-              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-            </a>
+            <a href="cv/seunghyun_cv.pdf" title="CV" target="_blank" rel="noopener"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+            <a href="https://scholar.google.com/citations?user=42zjqSUAAAAJ&hl=en" title="Google Scholar" target="_blank" rel="noopener"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+            <a href="https://github.com/lsh3163" target="_blank" rel="noopener"><i class="fa fa-github" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section id="education" class="section">
-      <h1>Education</h1>
-      <ul>
-        <li>
-          <p>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            <strong>Ph.D. in CSE, 2024~</strong>
-          </p>
-          <p>University of Michigan</p>
-        </li>
-        <li>
-          <p>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            <strong>MS in Artificial Intelligence, 2022~2024</strong>
-          </p>
-          <p>Korea University, Korea</p>
-        </li>
-        <li>
-          <p>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            <strong>BS in Computer Science, 2016~2022</strong>
-          </p>
-          <p>University of Seoul, Korea</p>
-        </li>
-      </ul>
     </section>
     
     <!-- Publications Section -->
@@ -268,113 +217,102 @@
       <h1>Publications</h1>
       <ul>
         <li>
-          <span class="affiliation-badge google">Google Research</span>
-          <p><strong>Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</strong></p>
+          <p>
+            <strong>Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</strong>
+            <span class="affiliation-text">(work done during an internship at Google Research)</span>
+            <span class="pub-links">
+              <a href="https://arxiv.org/pdf/2401.05675.pdf" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
+            </span>
+          </p>
           <p><em>ECCV 2024 Oral (2.3%)</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
-          <p>
-            <a href="https://arxiv.org/pdf/2401.05675.pdf" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
         <li>
-          <span class="affiliation-badge google">Google Research</span>
-          <p><strong>Cropper: Vision-Language Model for Image Cropping through In-Context Learning</strong></p>
+          <p>
+            <strong>Cropper: Vision-Language Model for Image Cropping through In-Context Learning</strong>
+            <span class="affiliation-text">(work done during an internship at Google Research)</span>
+          </p>
           <p><em>CVPR 2025</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee*, Jijun Jiang*, Yiran Xu*, Zhuofang Li*, Junjie Ke, Yinxiao Li, Junfeng He, Steven Hickson, Katie Datsenko, Sangpil Kim, Ming-Hsuan Yang, Irfan Essa, Feng Yang</p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Sound-Guided Semantic Image Manipulation</strong></p>
+          <p>
+            <strong>Sound-Guided Semantic Image Manipulation</strong>
+            <span class="affiliation-text">(co-worked with NVIDIA)</span>
+            <span class="pub-links">
+              <a href="https://kuai-lab.github.io/cvpr2022sound/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+              <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+              <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" title="Code" target="_blank" rel="noopener"><i class="fa fa-code" aria-hidden="true"></i></a>
+            </span>
+          </p>
           <p><em>CVPR 2022</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee, Wonseok Roh, Wonmin Byeon, Sang Ho Yoon, Chanyoung Kim, Jinkyu Kim*, Sangpil Kim*</p>
-          <p>
-            <a href="https://kuai-lab.github.io/cvpr2022sound/" title="Project" target="_blank" rel="noopener">
-              <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-            </a>
-            |
-            <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
-            |
-            <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" title="Code" target="_blank" rel="noopener">
-              <i class="fa fa-code" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Sound-Guided Semantic Video Generation</strong></p>
+          <p>
+            <strong>Sound-Guided Semantic Video Generation</strong>
+            <span class="affiliation-text">(co-worked with NVIDIA)</span>
+            <span class="pub-links">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+              <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" title="Dataset" target="_blank" rel="noopener"><i class="fa fa-database" aria-hidden="true"></i></a>
+            </span>
+          </p>
           <p><em>ECCV 2022</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee, Gyeongrok Oh, Wonmin Byeon, Chanyoung Kim, Won Jeong Ryoo, Sang Ho Yoon, Jihyun Bae, Jinkyu Kim*, Sangpil Kim*</p>
-          <p>
-            <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
-            |
-            <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" title="Dataset" target="_blank" rel="noopener">
-              <i class="fa fa-database" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Robust Sound-Guided Image Manipulation</strong></p>
+          <p>
+            <strong>Robust Sound-Guided Image Manipulation</strong>
+            <span class="affiliation-text">(co-worked with NVIDIA)</span>
+            <span class="pub-links">
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+            </span>
+          </p>
           <p><em>Neural Networks 2024</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee*, Hyung-gun Chi*, Gyeongrok Oh, Wonmin Byeon, Sang Ho Yoon, Hyunje Park, Wonjun Cho, Jinkyu Kim*, Sangpil Kim*</p>
-          <p>
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>The Power of Sound (TPoS): Audio Reactive Video Generation with Stable Diffusion</strong></p>
+          <p>
+            <strong>The Power of Sound (TPoS): Audio Reactive Video Generation with Stable Diffusion</strong>
+            <span class="affiliation-text">(co-worked with NVIDIA)</span>
+            <span class="pub-links">
+              <a href="https://ku-vai.github.io/TPoS/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+            </span>
+          </p>
           <p><em>ICCV 2023</em></p>
           <p><strong>Authors:</strong> Yujin Jeong, Wonjeong Ryoo, Seung Hyun Lee, Dabin Seo, Wonmin Byeon, Jinkyu Kim</p>
-          <p>
-            <a href="https://ku-vai.github.io/TPoS/" title="Project" target="_blank" rel="noopener">
-              <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Functional Hand Type Prior for 3D Hand Pose Estimation and Action Recognition from Egocentric View Monocular Videos</strong></p>
+          <p>
+            <strong>Audio-guided implicit neural representation for local image stylization</strong>
+            <span class="affiliation-text">(co-worked with NVIDIA)</span>
+            <span class="pub-links">
+              <a href="https://i0.wp.com/kuaicv.com/wp-content/uploads/2023/01/3d8aa-2023-01-17-ec98a4ed9b84-1.05.00.png?resize=1574%2C452&ssl=1" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+            </span>
+          </p>
+          <p><em>Computational Visual Media 2024</em></p>
+          <p><strong>Authors:</strong> Seung Hyun Lee, Chanyoung Kim, Wonmin Byeon, Sang Ho Yoon, Jinkyu Kim*, Sangpil Kim*</p>
+        </li>
+        <li>
+          <p>
+            <strong>Functional Hand Type Prior for 3D Hand Pose Estimation and Action Recognition from Egocentric View Monocular Videos</strong>
+          </p>
           <p><em>BMVC 2023 Oral</em></p>
           <p><strong>Authors:</strong> Wonseok Roh, Seung Hyun Lee, Wonjeong Ryoo, Gyeongrok Oh, Jakyung Lee, Soo Yeon Hwang, Hyung-gun Chi, Sangpil Kim</p>
         </li>
         <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Audio-guided implicit neural representation for local image stylization</strong></p>
-          <p><em>Computational Visual Media 2024</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Chanyoung Kim, Wonmin Byeon, Sang Ho Yoon, Jinkyu Kim*, Sangpil Kim*</p>
           <p>
-            <a href="https://i0.wp.com/kuaicv.com/wp-content/uploads/2023/01/3d8aa-2023-01-17-ec98a4ed9b84-1.05.00.png?resize=1574%2C452&ssl=1" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
+            <strong>Soundini: Sound-Guided Diffusion for Natural Video Editing</strong>
+            <span class="pub-links">
+              <a href="https://kuai-lab.github.io/soundini-gallery/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+              <a href="https://arxiv.org/abs/2304.06818" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+              <a href="https://github.com/kuai-lab/soundini-official" title="Code" target="_blank" rel="noopener"><i class="fa fa-code" aria-hidden="true"></i></a>
+            </span>
           </p>
-        </li>
-        <li>
-          <span class="affiliation-badge korea">Korea University</span>
-          <p><strong>Soundini: Sound-Guided Diffusion for Natural Video Editing</strong></p>
           <p><em>Under review</em></p>
           <p><strong>Authors:</strong> Seung Hyun Lee, Sieun Kim, Innfarn Yoo, Feng Yang, Donghyeon Cho, Youngseo Kim, Huiwen Chang, Jinkyu Kim*, Sangpil Kim*</p>
-          <p>
-            <a href="https://kuai-lab.github.io/soundini-gallery/" title="Project" target="_blank" rel="noopener">
-              <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-            </a>
-            |
-            <a href="https://arxiv.org/abs/2304.06818" title="Paper" target="_blank" rel="noopener">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            </a>
-            |
-            <a href="https://github.com/kuai-lab/soundini-official" title="Code" target="_blank" rel="noopener">
-              <i class="fa fa-code" aria-hidden="true"></i>
-            </a>
-          </p>
         </li>
       </ul>
     </section>
@@ -407,14 +345,15 @@
     </div>
   </footer>
   
-  <!-- Matter.js Library -->
+  <!-- Matter.js Library 및 모래 쌓기 효과 스크립트 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <script>
-    // Set up Matter.js physics engine and renderer on the canvas
     const { Engine, Render, World, Bodies } = Matter;
     const engine = Engine.create();
-    const canvas = document.getElementById('physics-canvas');
+    // 중력은 기본값 유지
+    engine.world.gravity.y = 1;
     
+    const canvas = document.getElementById('physics-canvas');
     const render = Render.create({
       canvas: canvas,
       engine: engine,
@@ -427,30 +366,31 @@
       }
     });
     
-    // Create boundaries for the simulation
+    // 바닥 및 벽 생성
     const ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 50, window.innerWidth, 100, { isStatic: true });
     const leftWall = Bodies.rectangle(-50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true });
     const rightWall = Bodies.rectangle(window.innerWidth + 50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true });
     World.add(engine.world, [ground, leftWall, rightWall]);
     
-    // Create a few bouncing circles
-    for (let i = 0; i < 10; i++) {
-      const circle = Bodies.circle(
-        Math.random() * window.innerWidth, 
-        Math.random() * window.innerHeight / 2, 
-        20, 
-        {
-          restitution: 0.9,
-          render: { fillStyle: '#2962ff' }
-        }
-      );
-      World.add(engine.world, circle);
+    // 모래 알갱이 생성 함수 (작은 입자)
+    function addSandGrain() {
+      const radius = Math.random() * 2 + 2; // 2~4 픽셀
+      const xPos = Math.random() * window.innerWidth;
+      const grain = Bodies.circle(xPos, -10, radius, {
+        restitution: 0.05,
+        friction: 0.9,
+        density: 0.001,
+        render: { fillStyle: '#c2b280' }
+      });
+      World.add(engine.world, grain);
     }
+    
+    // 일정 간격(20ms)마다 모래 알갱이 생성
+    setInterval(addSandGrain, 20);
     
     Engine.run(engine);
     Render.run(render);
     
-    // Update canvas size on window resize
     window.addEventListener('resize', function() {
       render.options.width = window.innerWidth;
       render.options.height = window.innerHeight;
