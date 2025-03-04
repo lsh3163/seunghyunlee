@@ -20,17 +20,6 @@
     a { text-decoration: none; transition: color 0.3s ease; }
     a:hover { color: #2962ff; }
     
-    /* 물리 효과 캔버스 (모래 쌓기 효과) */
-    #physics-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    
     /* 네비게이션 바 */
     nav {
       position: sticky;
@@ -81,11 +70,12 @@
     /* Container */
     .container { width: 90%; max-width: 1200px; margin: auto; }
     
-    /* About Section - 원래의 프로필 레이아웃으로 복원 */
+    /* About Section: 크기 축소 (여백 및 패딩 조정) */
     #about.section {
+      position: relative;
       background: #fff;
-      margin: 20px 0;
-      padding: 40px 20px;
+      margin: 10px 0;
+      padding: 20px 10px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
@@ -93,28 +83,28 @@
       display: flex; 
       flex-wrap: wrap; 
       align-items: center; 
-      margin: 40px 0;  /* 원래대로 40px 여백 */
+      margin: 20px 0;
     }
     .profile-img { flex: 1; text-align: center; }
     .profile-img img {
-      width: 200px;
-      height: 200px;
+      width: 250px;  /* 프로필 이미지 크기 키움 */
+      height: 250px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .profile-info { flex: 2; padding: 20px; }
+    .profile-info { flex: 2; padding: 10px; }
     
     /* Social Links */
-    .social-links { margin-top: 15px; }
+    .social-links { margin-top: 10px; }
     .social-links a {
-      margin-right: 15px;
-      font-size: 1.5rem;
+      margin-right: 10px;
+      font-size: 1.3rem;
       color: #2962ff;
     }
     .social-links a:hover { color: #1c54b2; }
     
-    /* Publications Section */
+    /* Publications Section (기존 스타일 유지) */
     .section { 
       background: #fff;
       margin: 20px 0;
@@ -131,20 +121,10 @@
     }
     .section ul li p { margin-bottom: 8px; }
     
-    /* 인라인 링크 아이콘 */
-    .pub-links {
-      display: inline;
-      margin-left: 10px;
-    }
-    .pub-links a {
-      display: inline;
-      margin-right: 10px;
-    }
-    /* 기울임체 텍스트 (affiliation) */
-    .affiliation-text {
-      font-style: italic;
-      margin-left: 10px;
-    }
+    /* 인라인 링크 및 기울임체 텍스트 */
+    .pub-links { display: inline; margin-left: 10px; }
+    .pub-links a { display: inline; margin-right: 10px; }
+    .affiliation-text { font-style: italic; margin-left: 10px; }
     
     /* Footer */
     footer { 
@@ -166,8 +146,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <!-- 모래 쌓기 효과를 위한 캔버스 -->
-  <canvas id="physics-canvas"></canvas>
   
   <nav>
     <div class="container">
@@ -182,7 +160,7 @@
   </nav>
   
   <div class="container">
-    <!-- About Section (프로필 레이아웃 원래대로) -->
+    <!-- About Section -->
     <section id="about" class="section">
       <div class="profile">
         <div class="profile-img">
@@ -242,9 +220,15 @@
             <strong>Sound-Guided Semantic Image Manipulation</strong>
             <span class="affiliation-text">(co-worked with NVIDIA)</span>
             <span class="pub-links">
-              <a href="https://kuai-lab.github.io/cvpr2022sound/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
-              <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-              <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" title="Code" target="_blank" rel="noopener"><i class="fa fa-code" aria-hidden="true"></i></a>
+              <a href="https://kuai-lab.github.io/cvpr2022sound/" title="Project" target="_blank" rel="noopener">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+              </a>
+              <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" title="Code" target="_blank" rel="noopener">
+                <i class="fa fa-code" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>CVPR 2022</em></p>
@@ -255,8 +239,12 @@
             <strong>Sound-Guided Semantic Video Generation</strong>
             <span class="affiliation-text">(co-worked with NVIDIA)</span>
             <span class="pub-links">
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-              <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" title="Dataset" target="_blank" rel="noopener"><i class="fa fa-database" aria-hidden="true"></i></a>
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
+              <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" title="Dataset" target="_blank" rel="noopener">
+                <i class="fa fa-database" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>ECCV 2022</em></p>
@@ -267,7 +255,9 @@
             <strong>Robust Sound-Guided Image Manipulation</strong>
             <span class="affiliation-text">(co-worked with NVIDIA)</span>
             <span class="pub-links">
-              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>Neural Networks 2024</em></p>
@@ -278,7 +268,9 @@
             <strong>The Power of Sound (TPoS): Audio Reactive Video Generation with Stable Diffusion</strong>
             <span class="affiliation-text">(co-worked with NVIDIA)</span>
             <span class="pub-links">
-              <a href="https://ku-vai.github.io/TPoS/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+              <a href="https://ku-vai.github.io/TPoS/" title="Project" target="_blank" rel="noopener">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>ICCV 2023</em></p>
@@ -289,7 +281,9 @@
             <strong>Audio-guided implicit neural representation for local image stylization</strong>
             <span class="affiliation-text">(co-worked with NVIDIA)</span>
             <span class="pub-links">
-              <a href="https://i0.wp.com/kuaicv.com/wp-content/uploads/2023/01/3d8aa-2023-01-17-ec98a4ed9b84-1.05.00.png?resize=1574%2C452&ssl=1" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+              <a href="https://i0.wp.com/kuaicv.com/wp-content/uploads/2023/01/3d8aa-2023-01-17-ec98a4ed9b84-1.05.00.png?resize=1574%2C452&ssl=1" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>Computational Visual Media 2024</em></p>
@@ -306,9 +300,15 @@
           <p>
             <strong>Soundini: Sound-Guided Diffusion for Natural Video Editing</strong>
             <span class="pub-links">
-              <a href="https://kuai-lab.github.io/soundini-gallery/" title="Project" target="_blank" rel="noopener"><i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
-              <a href="https://arxiv.org/abs/2304.06818" title="Paper" target="_blank" rel="noopener"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-              <a href="https://github.com/kuai-lab/soundini-official" title="Code" target="_blank" rel="noopener"><i class="fa fa-code" aria-hidden="true"></i></a>
+              <a href="https://kuai-lab.github.io/soundini-gallery/" title="Project" target="_blank" rel="noopener">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+              </a>
+              <a href="https://arxiv.org/abs/2304.06818" title="Paper" target="_blank" rel="noopener">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/kuai-lab/soundini-official" title="Code" target="_blank" rel="noopener">
+                <i class="fa fa-code" aria-hidden="true"></i>
+              </a>
             </span>
           </p>
           <p><em>Under review</em></p>
@@ -344,62 +344,5 @@
       <a href="#top">Back to top</a>
     </div>
   </footer>
-  
-  <!-- Matter.js Library 및 모래 쌓기 효과 스크립트 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-  <script>
-    const { Engine, Render, World, Bodies } = Matter;
-    const engine = Engine.create();
-    // 중력은 기본값 유지
-    engine.world.gravity.y = 1;
-    
-    const canvas = document.getElementById('physics-canvas');
-    const render = Render.create({
-      canvas: canvas,
-      engine: engine,
-      options: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        background: 'transparent',
-        wireframes: false,
-        pixelRatio: window.devicePixelRatio
-      }
-    });
-    
-    // 바닥 및 벽 생성
-    const ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight + 50, window.innerWidth, 100, { isStatic: true });
-    const leftWall = Bodies.rectangle(-50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true });
-    const rightWall = Bodies.rectangle(window.innerWidth + 50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true });
-    World.add(engine.world, [ground, leftWall, rightWall]);
-    
-    // 모래 알갱이 생성 함수 (작은 입자)
-    function addSandGrain() {
-      const radius = Math.random() * 2 + 2; // 2~4 픽셀
-      const xPos = Math.random() * window.innerWidth;
-      const grain = Bodies.circle(xPos, -10, radius, {
-        restitution: 0.05,
-        friction: 0.9,
-        density: 0.001,
-        render: { fillStyle: '#c2b280' }
-      });
-      World.add(engine.world, grain);
-    }
-    
-    // 일정 간격(20ms)마다 모래 알갱이 생성
-    setInterval(addSandGrain, 20);
-    
-    Engine.run(engine);
-    Render.run(render);
-    
-    window.addEventListener('resize', function() {
-      render.options.width = window.innerWidth;
-      render.options.height = window.innerHeight;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      Matter.Body.setPosition(ground, { x: window.innerWidth/2, y: window.innerHeight+50 });
-      Matter.Body.setPosition(leftWall, { x: -50, y: window.innerHeight/2 });
-      Matter.Body.setPosition(rightWall, { x: window.innerWidth+50, y: window.innerHeight/2 });
-    });
-  </script>
 </body>
 </html>
