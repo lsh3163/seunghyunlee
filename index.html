@@ -195,6 +195,56 @@
     .brief-news .news-date {
       font-weight: bold;
     }
+
+    .featured-publication {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+      gap: 24px;
+      margin-bottom: 28px !important;
+      padding: 18px !important;
+      border: 1px solid #d8e2dc !important;
+      border-radius: 10px;
+      background: #f7faf8;
+    }
+    .featured-publication > a {
+      display: block;
+    }
+    .featured-publication img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+    }
+    .featured-publication-copy {
+      align-self: center;
+    }
+    .featured-publication-title {
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+    .project-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .project-buttons a {
+      padding: 7px 11px;
+      border-radius: 5px;
+      color: #fff;
+      background: #2962ff;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .project-buttons a:hover {
+      color: #fff;
+      background: #1c54b2;
+    }
+    @media (max-width: 768px) {
+      .featured-publication {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
   <!-- Font Awesome (아이콘용) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -246,6 +296,18 @@
       <ol class="news-list">
         <li>
           <div class="news-header">
+            <span class="news-title">PRISM is now available on arXiv</span>
+            <span class="news-date">Jul 2026</span>
+          </div>
+          <p>
+            Polynomial representations for interaction-structured motor control.
+            <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project page</a>
+            &middot;
+            <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
+          </p>
+        </li>
+        <li>
+          <div class="news-header">
             <span class="news-title">Join Google DeepMind as 2026 Summer Intern</span>
             <span class="news-date">Jan 2026</span>
           </div>
@@ -273,6 +335,33 @@
       
       
       <h1>Publications</h1>
+
+      <h3>Robot Learning</h3>
+      <ul>
+        <li class="featured-publication">
+          <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/lsh3163/prism/main/assets/prism-twitter-teaser.png"
+              alt="PRISM motivation, method, and robot-control results">
+          </a>
+          <div class="featured-publication-copy">
+            <p class="featured-publication-title">
+              <strong>PRISM: Polynomial Representations for Interaction-Structured Motor Control</strong>
+            </p>
+            <p><em>arXiv 2026</em></p>
+            <p>
+              PRISM makes polynomial interactions among observable physical
+              variables explicit, learnable, and compact for locomotion and
+              contact-rich manipulation.
+            </p>
+            <div class="project-buttons">
+              <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project</a>
+              <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
+              <a href="https://github.com/lsh3163/prism" target="_blank" rel="noopener">Code</a>
+            </div>
+            <p><strong>Authors:</strong> Seung Hyun Lee, Stella X. Yu</p>
+          </div>
+        </li>
+      </ul>
 
       <h3> 📚 Foundation Models</h3>
       <ul>
@@ -429,7 +518,7 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>© 2025 Seung Hyun Lee. All rights reserved.</p>
+      <p>© 2026 Seung Hyun Lee. All rights reserved.</p>
       <a href="#top">Back to top</a>
     </div>
   </footer>
