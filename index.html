@@ -8,7 +8,7 @@
   <title>Seung Hyun Lee — Visual &amp; Embodied Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --paper: #f5f3ed;
@@ -351,19 +351,572 @@
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
   </style>
+  <style>
+    /* Restrained academic layout: typography and content take priority. */
+    :root {
+      --paper: #ffffff;
+      --surface: #ffffff;
+      --surface-soft: #f3f6f8;
+      --ink: #182026;
+      --muted: #5c6871;
+      --forest: #244f73;
+      --forest-light: #2f638d;
+      --lime: #e8eef3;
+      --orange: #2f638d;
+      --line: #dfe5e9;
+      --shadow: none;
+      --radius: 10px;
+      --max-width: 1040px;
+    }
+
+    body {
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.68;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max-width));
+    }
+
+    .site-nav {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 66px;
+    }
+
+    .brand {
+      gap: 9px;
+      font-size: 0.94rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      width: 25px;
+      height: 25px;
+      color: #fff;
+      background: var(--forest);
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #53606a;
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .nav-links .nav-cv {
+      padding: 7px 12px;
+      border-radius: 6px;
+    }
+
+    .hero {
+      padding: 72px 0 78px;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--forest-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+    }
+
+    .eyebrow::before {
+      display: none;
+    }
+
+    h1,
+    h2,
+    .project-card h3,
+    .subsection-title {
+      font-family: inherit;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(2.45rem, 5vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      color: inherit;
+    }
+
+    .hero-summary {
+      max-width: 730px;
+      margin-top: 23px;
+      color: #3f4b53;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .hero-summary + .hero-summary {
+      margin-top: 11px;
+    }
+
+    .hero-summary a {
+      color: var(--forest-light);
+      text-decoration-color: #a9bccb;
+    }
+
+    .action-row {
+      gap: 8px;
+      margin-top: 26px;
+    }
+
+    .action-link {
+      min-height: 38px;
+      padding: 7px 12px;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .action-link:hover {
+      border-color: #aab8c1;
+      background: #f8fafb;
+      transform: none;
+    }
+
+    .profile-card {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .profile-card::before {
+      display: none;
+    }
+
+    .profile-card img {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .profile-copy {
+      padding: 13px 0 0;
+    }
+
+    .profile-name {
+      font-size: 0.9rem;
+    }
+
+    .profile-role,
+    .profile-contact {
+      font-size: 0.78rem;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-header {
+      display: block;
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .research-section {
+      color: var(--ink);
+      background: #f7f9fa;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .research-section .eyebrow {
+      color: var(--forest-light);
+    }
+
+    .research-section .section-intro {
+      color: var(--muted);
+    }
+
+    .research-grid {
+      gap: 48px;
+    }
+
+    .research-card {
+      min-height: 0;
+      padding: 22px 0 0;
+      border: 0;
+      border-top: 2px solid #9eb4c4;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .research-index {
+      display: block;
+      width: auto;
+      height: auto;
+      margin-bottom: 10px;
+      color: var(--forest-light);
+      background: transparent;
+      border-radius: 0;
+      font-size: 0.72rem;
+    }
+
+    .research-card h3 {
+      margin-bottom: 7px;
+      font-size: 1.15rem;
+    }
+
+    .research-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .research-label {
+      margin-top: 15px;
+      color: var(--forest-light);
+      font-size: 0.68rem;
+      letter-spacing: 0.07em;
+    }
+
+    .project-grid {
+      display: block;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+      gap: 34px;
+      padding: 32px 0;
+      overflow: visible;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .project-card:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-media,
+    .project-media.prism-media {
+      min-height: 210px;
+      padding: 14px;
+      background: #f3f6f7;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .project-media img {
+      max-height: 205px;
+      border-radius: 5px;
+    }
+
+    .project-media.prism-media img {
+      box-shadow: none;
+    }
+
+    .project-content {
+      align-self: center;
+      padding: 0;
+    }
+
+    .project-meta {
+      margin-bottom: 8px;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+    }
+
+    .project-card h3 {
+      font-size: 1.28rem;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .project-description {
+      margin-top: 10px;
+      font-size: 0.88rem;
+    }
+
+    .authors {
+      margin-top: 11px;
+      font-size: 0.76rem;
+    }
+
+    .tag-list {
+      display: none;
+    }
+
+    .project-links,
+    .publication-links {
+      gap: 12px;
+      margin-top: 13px;
+    }
+
+    .project-links a,
+    .publication-links a {
+      font-size: 0.78rem;
+    }
+
+    .earlier-work {
+      padding-top: 12px;
+    }
+
+    .publication-group + .publication-group {
+      margin-top: 46px;
+    }
+
+    .publication-group-title {
+      color: #4b5962;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .publication-row {
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 24px;
+      padding: 22px 0;
+    }
+
+    .publication-venue {
+      color: var(--forest-light);
+      font-size: 0.7rem;
+    }
+
+    .publication-title {
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .publication-note {
+      font-size: 0.82rem;
+    }
+
+    .publication-authors {
+      color: #6a747b;
+      font-size: 0.72rem;
+    }
+
+    .updates-section {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .updates-list {
+      max-width: 820px;
+    }
+
+    .update-item {
+      grid-template-columns: 110px minmax(0, 1fr);
+      padding: 17px 0;
+    }
+
+    .update-item time {
+      color: var(--forest-light);
+      font-size: 0.7rem;
+    }
+
+    .update-item strong {
+      font-size: 0.9rem;
+    }
+
+    .update-item p {
+      font-size: 0.82rem;
+    }
+
+    .bottom-grid {
+      gap: 56px;
+    }
+
+    .subsection-title {
+      margin-bottom: 18px;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .teaching-item {
+      grid-template-columns: 105px minmax(0, 1fr);
+      padding: 16px 0;
+    }
+
+    .teaching-term {
+      color: var(--forest-light);
+      font-size: 0.7rem;
+    }
+
+    .teaching-course {
+      font-size: 0.9rem;
+    }
+
+    .teaching-role,
+    .teaching-link,
+    .honors-list li {
+      font-size: 0.8rem;
+    }
+
+    .honors-list li {
+      padding: 12px 0;
+    }
+
+    .site-footer {
+      padding: 26px 0 30px;
+      color: var(--muted);
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner a {
+      color: var(--forest-light);
+    }
+
+    .hero-statement {
+      max-width: 700px;
+      margin-top: 12px;
+      color: var(--forest);
+      font-size: 1.18rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .action-row {
+      gap: 18px;
+    }
+
+    .action-link,
+    .action-link.primary {
+      min-height: 0;
+      padding: 0;
+      color: var(--forest-light);
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      font-size: 0.82rem;
+    }
+
+    .action-link:hover,
+    .action-link.primary:hover {
+      color: var(--forest);
+      border: 0;
+      background: transparent;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-meta {
+      justify-content: flex-start;
+    }
+
+    .publication-group + .publication-group {
+      margin-top: 0;
+    }
+
+    .bottom-grid {
+      display: block;
+      max-width: 820px;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .profile-card {
+        display: block;
+        width: 180px;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(calc(100% - 32px), var(--max-width));
+      }
+
+      .hero {
+        padding: 52px 0 58px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 10.5vw, 2.65rem);
+      }
+
+      .hero-summary {
+        font-size: 0.94rem;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .research-grid {
+        gap: 34px;
+      }
+
+      .project-media,
+      .project-media.prism-media {
+        min-height: 180px;
+      }
+
+      .profile-card {
+        width: 140px;
+      }
+
+      .publication-row,
+      .update-item,
+      .teaching-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <nav class="site-nav" aria-label="Primary navigation">
     <div class="container nav-inner">
-      <a class="brand" href="#about" aria-label="Seung Hyun Lee, home">
-        <span class="brand-mark" aria-hidden="true">S</span>
-        <span>Seung Hyun Lee</span>
-      </a>
+      <a class="brand" href="#about" aria-label="Seung Hyun Lee, home">Seung Hyun Lee</a>
       <ul class="nav-links">
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="#publications">Selected Work</a></li>
+        <li><a href="#other-publications">Publications</a></li>
         <li><a href="#teaching">Teaching</a></li>
         <li><a class="nav-cv" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">CV</a></li>
       </ul>
@@ -374,79 +927,36 @@
     <header id="about" class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Structured Physical Intelligence</p>
-          <h1>Foundation models that <span>perceive structure</span> and learn through interaction.</h1>
+          <p class="eyebrow">Ph.D. Candidate · University of Michigan CSE</p>
+          <h1>Seung Hyun Lee</h1>
+          <p class="hero-statement">Structured foundation models for visual and embodied intelligence.</p>
           <p class="hero-summary">
             Seung Hyun Lee is a Ph.D. candidate in Computer Science and Engineering at the
             <a href="https://cse.engin.umich.edu/" target="_blank" rel="noopener">University of Michigan</a>,
             advised by Prof. <a href="https://web.eecs.umich.edu/~stellayu/" target="_blank" rel="noopener">Stella X. Yu</a>.
-            His research focuses on developing foundation models for visual and embodied intelligence,
-            bridging human perception with machine understanding and physical interaction.
-          </p>
-          <p class="hero-summary">
-            His work spans structure-aware visual representation, generative modeling, and robot learning.
-            He has interned at Google DeepMind and Google Research. At Google Research, he developed methods
-            for improving image generation and cropping using perceptual quality signals.
+            His work spans structure-aware visual representation, generative modeling, and robot learning. He has
+            interned at Google DeepMind and Google Research; at Google Research, he developed methods for improving
+            image generation and cropping using perceptual quality signals.
           </p>
           <div class="action-row" aria-label="Profile links">
-            <a class="action-link primary" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">View CV</a>
+            <a class="action-link primary" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">CV</a>
             <a class="action-link" href="https://scholar.google.com/citations?user=42zjqSUAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
             <a class="action-link" href="https://github.com/lsh3163" target="_blank" rel="noopener">GitHub</a>
             <a class="action-link" href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="action-link" href="mailto:seungle@umich.edu">Email</a>
           </div>
         </div>
 
         <aside class="profile-card" aria-label="Profile">
           <img src="./authors/admin/profile.png" alt="Seung Hyun Lee">
-          <div class="profile-copy">
-            <p class="profile-name">Seung Hyun Lee</p>
-            <p class="profile-role">Ph.D. Candidate · Michigan CSE</p>
-            <p class="profile-contact">seungle [at] umich [dot] edu</p>
-          </div>
         </aside>
       </div>
     </header>
 
-    <section id="research" class="section research-section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Research direction</p>
-            <h2>From structured perception to physical interaction.</h2>
-          </div>
-          <p class="section-intro">
-            I study how models can discover useful structure in visual observations and represent interactions among
-            physical variables for robust perception and control.
-          </p>
-        </div>
-
-        <div class="research-grid">
-          <article class="research-card">
-            <span class="research-index">01</span>
-            <h3>Structured Perception</h3>
-            <p>Organize scenes into regions, objects, and part hierarchies so visual predictions preserve physical structure.</p>
-            <span class="research-label">SHED · Perception</span>
-          </article>
-          <article class="research-card">
-            <span class="research-index">02</span>
-            <h3>Physical Interaction</h3>
-            <p>Make interactions among observable state variables explicit, compact, and useful for robust robot control.</p>
-            <span class="research-label">PRISM · Interaction</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="publications" class="section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <p class="eyebrow">Selected research</p>
-            <h2>Structure across vision and action.</h2>
-          </div>
-          <p class="section-intro">
-            Two complementary directions: learning the structure of visual scenes and learning the structure of physical interactions.
-          </p>
+          <h2>Selected Work</h2>
         </div>
 
         <div class="project-grid">
@@ -459,7 +969,6 @@
             </a>
             <div class="project-content">
               <div class="project-meta">
-                <span class="project-topic">Physical interaction</span>
                 <span>arXiv 2026</span>
               </div>
               <h3>PRISM: Polynomial Representations for Interaction-Structured Motor Control</h3>
@@ -468,11 +977,6 @@
                 improving locomotion and contact-rich manipulation without adding sensors.
               </p>
               <p class="authors"><strong>Seung Hyun Lee</strong>, Stella X. Yu</p>
-              <ul class="tag-list" aria-label="PRISM topics">
-                <li>Robot learning</li>
-                <li>Physical interaction</li>
-                <li>VLA</li>
-              </ul>
               <div class="project-links">
                 <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project</a>
                 <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
@@ -490,7 +994,6 @@
             </a>
             <div class="project-content">
               <div class="project-meta">
-                <span class="project-topic">Structured perception</span>
                 <span>arXiv 2026</span>
               </div>
               <h3>SHED Light on Segmentation for Dense Prediction</h3>
@@ -499,11 +1002,6 @@
                 sharper depth boundaries, coherent scene structure, and stronger synthetic-to-real generalization.
               </p>
               <p class="authors"><strong>Seung Hyun Lee</strong>, Sangwoo Mo, Stella X. Yu</p>
-              <ul class="tag-list" aria-label="SHED topics">
-                <li>3D perception</li>
-                <li>Dense prediction</li>
-                <li>Segment hierarchy</li>
-              </ul>
               <div class="project-links">
                 <a href="https://arxiv.org/abs/2601.22529" target="_blank" rel="noopener">Paper</a>
                 <a href="https://arxiv.org/pdf/2601.22529" target="_blank" rel="noopener">PDF</a>
@@ -514,25 +1012,17 @@
       </div>
     </section>
 
-    <section class="section earlier-work" aria-labelledby="earlier-work-title">
+    <section id="other-publications" class="section earlier-work" aria-labelledby="earlier-work-title">
       <div class="container">
         <div class="section-header">
-          <div>
-            <p class="eyebrow">Earlier work</p>
-            <h2 id="earlier-work-title">Generative models &amp; multimodal perception.</h2>
-          </div>
-          <p class="section-intro">
-            Prior work on perceptual quality, vision-language models, and sound-guided synthesis informs my broader interest in how models discover and use structure.
-          </p>
+          <h2 id="earlier-work-title">Other Publications</h2>
         </div>
 
         <div class="publication-group">
-          <h3 class="publication-group-title">Generative models &amp; quality signals</h3>
           <article class="publication-row">
             <p class="publication-venue">ECCV 2024<br>Oral</p>
             <div>
               <h4 class="publication-title">Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</h4>
-              <p class="publication-note">Balances multiple perceptual reward signals to improve text-to-image generation. Work done at Google Research.</p>
               <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
               <div class="publication-links"><a href="https://arxiv.org/abs/2401.05675" target="_blank" rel="noopener">Paper</a></div>
             </div>
@@ -541,7 +1031,6 @@
             <p class="publication-venue">CVPR 2025</p>
             <div>
               <h4 class="publication-title">Cropper: Vision-Language Model for Image Cropping through In-Context Learning</h4>
-              <p class="publication-note">Uses in-context learning for free-form, subject-aware, and aspect-ratio-aware image cropping. Work done at Google Research.</p>
               <p class="publication-authors"><strong>Seung Hyun Lee*</strong>, Jijun Jiang*, Yiran Xu*, Zhuofang Li*, Junjie Ke, Yinxiao Li, Junfeng He, Steven Hickson, Katie Datsenko, Sangpil Kim, Ming-Hsuan Yang, Irfan Essa, Feng Yang</p>
               <div class="publication-links"><a href="https://arxiv.org/abs/2408.07790" target="_blank" rel="noopener">Paper</a></div>
             </div>
@@ -549,7 +1038,6 @@
         </div>
 
         <div class="publication-group">
-          <h3 class="publication-group-title">Sound-guided visual synthesis</h3>
           <article class="publication-row">
             <p class="publication-venue">CVPR 2022</p>
             <div>
@@ -605,36 +1093,6 @@
       </div>
     </section>
 
-    <section class="section updates-section" aria-labelledby="updates-title">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">Updates</p>
-            <h2 id="updates-title">Recent milestones.</h2>
-          </div>
-          <p class="section-intro">Research, internships, and academic milestones shaping the next stage of my work.</p>
-        </div>
-        <ol class="updates-list">
-          <li class="update-item">
-            <time datetime="2026-07">Jul 2026</time>
-            <div><strong>PRISM is available on arXiv.</strong><p>Polynomial representations for interaction-structured motor control.</p></div>
-          </li>
-          <li class="update-item">
-            <time datetime="2026-05">Summer 2026</time>
-            <div><strong>Research Intern at Google DeepMind.</strong><p>Robotics research internship.</p></div>
-          </li>
-          <li class="update-item">
-            <time datetime="2026-01">Jan 2026</time>
-            <div><strong>SHED is available on arXiv.</strong><p>Bidirectional segment hierarchies for structure-aware dense prediction.</p></div>
-          </li>
-          <li class="update-item">
-            <time datetime="2025-10">Oct 2025</time>
-            <div><strong>Advanced to Ph.D. candidacy.</strong><p>Thesis direction: segment hierarchy for depth estimation and structured visual representation.</p></div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <section id="teaching" class="section">
       <div class="container bottom-grid">
         <div>
@@ -667,22 +1125,13 @@
           </ul>
         </div>
 
-        <aside>
-          <h2 class="subsection-title">Honors &amp; Service</h2>
-          <ul class="honors-list">
-            <li>Google Research Travel Grants for CVPR 2025 and ECCV 2024</li>
-            <li>PyTorch open-source contribution and tutorial translation mentor, 2021</li>
-            <li>Google Developer Student Clubs, University of Seoul, 2021</li>
-            <li>Software Maestro 11th cohort</li>
-          </ul>
-        </aside>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© 2026 Seung Hyun Lee. Visual &amp; Embodied Intelligence.</p>
+      <p>© 2026 Seung Hyun Lee.</p>
       <a href="#about">Back to top ↑</a>
     </div>
   </footer>
