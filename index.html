@@ -3,537 +3,687 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Seung Hyun Lee - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta name="description" content="Seung Hyun Lee develops foundation models for visual and embodied intelligence, with a focus on structured perception and physical interaction.">
+  <meta name="theme-color" content="#143a32">
+  <title>Seung Hyun Lee — Visual &amp; Embodied Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
   <style>
-    /* 기본 스타일 */
-    html { scroll-behavior: smooth; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      font-family: 'Roboto', sans-serif; 
-      color: #333; 
-      background: #f9f9f9; 
-      line-height: 1.4; 
-      font-size: 16px;
-      position: relative;
+    :root {
+      --paper: #f5f3ed;
+      --surface: #fffefb;
+      --surface-soft: #eef2ed;
+      --ink: #14231f;
+      --muted: #5f6c67;
+      --forest: #143a32;
+      --forest-light: #24594b;
+      --lime: #dcecae;
+      --orange: #dd7044;
+      --line: rgba(20, 58, 50, 0.14);
+      --shadow: 0 20px 55px rgba(24, 47, 40, 0.09);
+      --radius: 22px;
+      --max-width: 1120px;
     }
-    a { text-decoration: none; transition: color 0.3s ease; }
-    a:hover { color: #2962ff; }
-    
-    /* 네비게이션 바 */
-    nav {
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, video:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+    img, video { display: block; max-width: 100%; }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2000;
+      padding: 9px 14px;
+      color: #fff;
+      background: var(--forest);
+      border-radius: 8px;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(calc(100% - 40px), var(--max-width)); margin-inline: auto; }
+
+    .site-nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 8px 20px;
+      border-bottom: 1px solid rgba(20, 58, 50, 0.08);
+      background: rgba(245, 243, 237, 0.9);
+      backdrop-filter: blur(16px);
     }
-    nav .container { 
-      display: flex; 
-      align-items: center; 
-      justify-content: flex-start;
-    }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #333;
-      margin-right: 40px;
-    }
-    nav ul {
+    .nav-inner {
       display: flex;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+      min-height: 70px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
     }
-    nav ul li { margin: 0 15px; }
-    nav ul li a {
-      font-weight: 700;
-      color: #333;
-      font-size: 1rem;
-      padding: 8px 0;
-      position: relative;
-    }
-    nav ul li a::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #2962ff;
-      transition: width 0.3s;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    nav ul li a:hover::after { width: 100%; }
-    
-    /* Container */
-    .container { width: 90%; max-width: 1200px; margin: auto; }
-    
-    /* About Section: 크기 축소 (여백 및 패딩 조정) */
-    #about.section {
-      position: relative;
-      background: #fff;
-      margin: 10px 0;
-      padding: 20px 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .profile { 
-      display: flex; 
-      flex-wrap: wrap; 
-      align-items: center; 
-      margin: 20px 0;
-    }
-    .profile-img { flex: 1; text-align: center; }
-    .profile-img img {
-      width: 250px;  
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .profile-info { flex: 2; padding: 10px; }
-    
-    /* Social Links */
-    .social-links { margin-top: 10px; }
-    .social-links a {
-      margin-right: 10px;
-      font-size: 1.3rem;
-      color: #2962ff;
-    }
-    .social-links a:hover { color: #1c54b2; }
-    
-    /* Publications Section */
-    .section { 
-      background: #fff;
-      margin: 20px 0;
-      padding: 40px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .section h1, .section h2, .section h3 { margin-bottom: 15px; }
-    .section ul { list-style: none; }
-    .section ul li {
-      margin-bottom: 15px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-    .section ul li p {
-      margin-bottom: 6px;
-      overflow-wrap: anywhere;
-    }
-    
-    /* 인라인 링크 및 기울임체 텍스트 */
-    .pub-links { display: inline; margin-left: 10px; }
-    .pub-links a { display: inline; margin-right: 10px; }
-    .pub-links a:last-child { margin-right: 0; }
-    .affiliation-text { font-style: italic; margin-left: 10px; }
-    
-    /* Footer */
-    footer { 
-      text-align: center; 
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    
-    @media (max-width: 768px) {
-      .profile { flex-direction: column; text-align: center; }
-      .profile-info { padding: 20px 0; }
-      nav .container { flex-direction: column; align-items: flex-start; }
-      nav ul { flex-direction: column; }
-      nav ul li { margin: 10px 0; }
-      .pub-links { margin-left: 0; }
-    }
-    .news-list {
-      counter-reset: news-counter;
-      list-style-type: none;
-    }
-    .news-list li {
-      position: relative;
-      padding-left: 40px;
-      margin-bottom: 8px;
-    }
-    .news-list li:before {
-      content: counter(news-counter);
-      counter-increment: news-counter;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: #2962ff;
-      color: white;
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em; }
+    .brand-mark {
+      display: grid;
       width: 28px;
       height: 28px;
+      place-items: center;
+      color: var(--forest);
+      background: var(--lime);
+      border-radius: 9px;
+      font-family: "Newsreader", serif;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 26px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 600; transition: color 180ms ease; }
+    .nav-links a:hover { color: var(--forest); }
+    .nav-links .nav-cv { padding: 8px 13px; color: #fff; background: var(--forest); border-radius: 999px; }
+
+    .hero { padding: 88px 0 92px; overflow: hidden; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.65fr);
+      gap: 76px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--forest-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 28px; height: 2px; background: var(--orange); content: ""; }
+    h1, h2 { font-family: "Newsreader", serif; font-weight: 600; letter-spacing: -0.035em; }
+    .hero h1 { max-width: 780px; font-size: clamp(3.2rem, 7vw, 5.55rem); line-height: 0.98; }
+    .hero h1 span { color: var(--forest-light); }
+    .hero-summary {
+      max-width: 760px;
+      margin-top: 28px;
+      color: #354640;
+      font-size: clamp(1.03rem, 1.8vw, 1.18rem);
+      line-height: 1.72;
+    }
+    .hero-summary + .hero-summary { margin-top: 14px; }
+    .hero-summary a {
+      color: var(--forest-light);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(36, 89, 75, 0.32);
+      text-underline-offset: 3px;
+    }
+    .action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .action-link {
+      display: inline-flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 254, 251, 0.58);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+    .action-link:hover { border-color: rgba(20, 58, 50, 0.34); background: var(--surface); transform: translateY(-2px); }
+    .action-link.primary { color: #fff; border-color: var(--forest); background: var(--forest); }
+
+    .profile-card {
+      position: relative;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid rgba(20, 58, 50, 0.09);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .profile-card::before {
+      position: absolute;
+      right: -35px;
+      bottom: -38px;
+      z-index: -1;
+      width: 150px;
+      height: 150px;
+      background: var(--lime);
       border-radius: 50%;
-      text-align: center;
-      line-height: 28px;
-      font-weight: bold;
+      content: "";
+      opacity: 0.65;
     }
-    .news-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 8px;
+    .profile-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 19px; }
+    .profile-copy { padding: 17px 7px 6px; }
+    .profile-name { font-weight: 700; }
+    .profile-role, .profile-contact { color: var(--muted); font-size: 0.88rem; }
+    .profile-contact { margin-top: 8px; }
+
+    .section { padding: 88px 0; }
+    .section-header {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 40px;
     }
-    .news-title {
-      font-weight: bold;
-      font-size: 1.1rem;
+    .section-header h2 { font-size: clamp(2.45rem, 5vw, 4rem); line-height: 1.02; }
+    .section-intro { max-width: 650px; color: var(--muted); font-size: 1.05rem; }
+
+    .research-section { color: #f8f7f2; background: var(--forest); }
+    .research-section .eyebrow { color: var(--lime); }
+    .research-section .section-intro { color: rgba(248, 247, 242, 0.72); }
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .research-card {
+      min-height: 270px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.055);
     }
-    .news-date {
-      color: #666;
-      font-size: 0.9rem;
+    .research-index {
+      display: inline-grid;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 50px;
+      place-items: center;
+      color: var(--forest);
+      background: var(--lime);
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
     }
-    
-    /* Brief News */
-    .brief-news {
-      list-style: none;
-      margin-top: 4px;
-      line-height: 1.2;
-    }
-    .brief-news li {
-      margin-bottom: 1px;
-      font-size: 0.9rem;
-      border: none;
-      padding-bottom: 0px;
-    }
-    .brief-news .news-date {
-      font-weight: bold;
+    .research-card h3 { margin-bottom: 10px; font-size: 1.35rem; line-height: 1.25; }
+    .research-card p { max-width: 430px; color: rgba(248, 247, 242, 0.7); font-size: 0.96rem; }
+    .research-label {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--lime);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
-    .featured-publication {
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 14px 38px rgba(24, 47, 40, 0.06);
+    }
+    .project-media {
       display: grid;
-      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
-      gap: 24px;
-      margin-bottom: 28px !important;
-      padding: 18px !important;
-      border: 1px solid #d8e2dc !important;
-      border-radius: 10px;
-      background: #f7faf8;
+      min-height: 286px;
+      place-items: center;
+      padding: 22px;
+      background: #e8eee9;
+      border-bottom: 1px solid var(--line);
     }
-    .featured-publication > a {
-      display: block;
-    }
-    .featured-publication img {
-      display: block;
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 5px 16px rgba(0,0,0,0.1);
-    }
-    .featured-publication-copy {
-      align-self: center;
-    }
-    .featured-publication-title {
-      font-size: 1.15rem;
-      line-height: 1.35;
-    }
-    .project-buttons {
+    .project-media.prism-media { background: #0f3029; }
+    .project-media img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 12px; }
+    .project-media.prism-media img { box-shadow: 0 16px 34px rgba(0, 0, 0, 0.23); }
+    .project-content { padding: 28px; }
+    .project-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .project-buttons a {
-      padding: 7px 11px;
-      border-radius: 5px;
-      color: #fff;
-      background: #2962ff;
-      font-size: 0.85rem;
+    .project-topic { color: var(--forest-light); }
+    .project-card h3 { font-family: "Newsreader", serif; font-size: 1.72rem; line-height: 1.08; letter-spacing: -0.02em; }
+    .project-description { margin-top: 15px; color: var(--muted); font-size: 0.95rem; }
+    .authors { margin-top: 16px; color: #3e4d48; font-size: 0.82rem; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; list-style: none; }
+    .tag-list li {
+      padding: 5px 9px;
+      color: var(--forest-light);
+      background: var(--surface-soft);
+      border-radius: 999px;
+      font-size: 0.72rem;
       font-weight: 700;
     }
-    .project-buttons a:hover {
-      color: #fff;
-      background: #1c54b2;
+    .project-links, .publication-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+    .project-links a, .publication-links a { color: var(--forest-light); font-size: 0.84rem; font-weight: 700; }
+    .project-links a::after, .publication-links a::after { margin-left: 4px; content: "↗"; }
+
+    .earlier-work { padding-top: 20px; }
+    .publication-group + .publication-group { margin-top: 56px; }
+    .publication-group-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px;
+      color: var(--forest);
+      font-size: 0.83rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
-    @media (max-width: 768px) {
-      .featured-publication {
-        grid-template-columns: 1fr;
-      }
+    .publication-group-title::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+    .publication-row {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr);
+      gap: 22px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .publication-venue { color: var(--orange); font-size: 0.78rem; font-weight: 800; line-height: 1.4; text-transform: uppercase; }
+    .publication-title { font-size: 1.05rem; font-weight: 700; line-height: 1.45; }
+    .publication-note { margin-top: 5px; color: var(--muted); font-size: 0.88rem; }
+    .publication-authors { margin-top: 7px; color: #68746f; font-size: 0.76rem; line-height: 1.55; }
+    .publication-links { margin-top: 9px; }
+
+    .updates-section { background: #ebece5; }
+    .updates-list { list-style: none; }
+    .update-item {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .update-item time { color: var(--forest-light); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+    .update-item strong { display: block; margin-bottom: 4px; }
+    .update-item p { color: var(--muted); font-size: 0.9rem; }
+
+    .bottom-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr); gap: 64px; }
+    .subsection-title { margin-bottom: 24px; font-family: "Newsreader", serif; font-size: 2.4rem; letter-spacing: -0.025em; }
+    .teaching-list, .honors-list { list-style: none; }
+    .teaching-item {
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .teaching-term { color: var(--orange); font-size: 0.77rem; font-weight: 800; text-transform: uppercase; }
+    .teaching-course { font-weight: 700; }
+    .teaching-role { color: var(--muted); font-size: 0.88rem; }
+    .teaching-link { color: var(--forest-light); font-size: 0.8rem; font-weight: 700; }
+    .teaching-link::after { margin-left: 4px; content: "↗"; }
+    .honors-list li { padding: 15px 0; color: #40504a; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+
+    .site-footer { padding: 30px 0 36px; color: rgba(255, 255, 255, 0.72); background: var(--forest); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 0.82rem; }
+    .footer-inner a { color: var(--lime); font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 46px; }
+      .profile-card { display: grid; grid-template-columns: 180px 1fr; align-items: center; max-width: 560px; }
+      .profile-copy { padding: 22px; }
+      .section-header, .bottom-grid { grid-template-columns: 1fr; gap: 24px; }
+      .research-grid, .project-grid { grid-template-columns: 1fr; }
+      .research-card { min-height: 0; }
+      .research-index { margin-bottom: 36px; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(calc(100% - 28px), var(--max-width)); }
+      .nav-inner { min-height: 64px; }
+      .brand { font-size: 0.9rem; }
+      .nav-links { gap: 13px; }
+      .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; }
+      .nav-links a { font-size: 0.8rem; }
+      .hero { padding: 62px 0 70px; }
+      .hero h1 { font-size: clamp(2.75rem, 15vw, 4.15rem); }
+      .profile-card { grid-template-columns: 120px 1fr; padding: 10px; }
+      .profile-copy { padding: 13px; }
+      .section { padding: 68px 0; }
+      .project-media { min-height: 220px; padding: 14px; }
+      .project-content { padding: 23px; }
+      .publication-row, .update-item, .teaching-item { grid-template-columns: 1fr; gap: 8px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
   </style>
-  <!-- Font Awesome (아이콘용) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  
-  <nav>
-    <div class="container">
-      <div class="logo">Seung Hyun Lee</div>
-      <ul>
-        <li><a href="#about">Home</a></li>
-        <li><a href="#news">News</a></li>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#about" aria-label="Seung Hyun Lee, home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Seung Hyun Lee</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
-        <li><a href="#awards">Awards & Honors</a></li>
-        <li><a href="#activities">Activities</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a class="nav-cv" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">CV</a></li>
       </ul>
     </div>
   </nav>
-  
-  <div class="container">
-    <!-- About Section -->
-    <section id="about" class="section">
-      <div class="profile">
-        <div class="profile-img">
-          <img src="./authors/admin/profile.png" alt="Seung Hyun Lee">
-          
-        </div>
-        <div class="profile-info">
-          <p>
-            Hello! I'm Seung Hyun Lee, Ph.D. candidate working with Prof. 
-            <a href="https://web.eecs.umich.edu/~stellayu/" target="_blank" rel="noopener">Stella X. Yu</a> at 
-            <a href="https://cse.engin.umich.edu/" target="_blank" rel="noopener">CSE, University of Michigan</a>. 
-            Before joining Stella's group, my research focused on using ambient sound for visual synthesis.
-            I worked as a Google Student Researcher, exploring ways to improve image generation and aesthetic quality of image cropping. My research goal is to develop a physically understandable foundation model in an unsupervised manner, bridging human perception and machine understanding. Feel free to reach out to chat more about this.
+
+  <main id="main-content">
+    <header id="about" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Structured Physical Intelligence</p>
+          <h1>Foundation models that <span>perceive structure</span> and learn through interaction.</h1>
+          <p class="hero-summary">
+            Seung Hyun Lee is a Ph.D. candidate in Computer Science and Engineering at the
+            <a href="https://cse.engin.umich.edu/" target="_blank" rel="noopener">University of Michigan</a>,
+            advised by Prof. <a href="https://web.eecs.umich.edu/~stellayu/" target="_blank" rel="noopener">Stella X. Yu</a>.
+            His research focuses on developing foundation models for visual and embodied intelligence,
+            bridging human perception with machine understanding and physical interaction.
           </p>
-          <p><strong>Contact:</strong> seungle [at] umich [dot] edu </p>
-          <div class="social-links">
-            <a href="cv/seunghyun_cv.pdf" title="CV" target="_blank" rel="noopener"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-            <a href="https://scholar.google.com/citations?user=42zjqSUAAAAJ&hl=en" title="Google Scholar" target="_blank" rel="noopener"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
-            <a href="https://github.com/lsh3163" target="_blank" rel="noopener"><i class="fa fa-github" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-          </div>      
+          <p class="hero-summary">
+            His work spans structure-aware visual representation, generative modeling, and robot learning.
+            He has interned at Google DeepMind and Google Research. At Google Research, he developed methods
+            for improving image generation and cropping using perceptual quality signals.
+          </p>
+          <div class="action-row" aria-label="Profile links">
+            <a class="action-link primary" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">View CV</a>
+            <a class="action-link" href="https://scholar.google.com/citations?user=42zjqSUAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="action-link" href="https://github.com/lsh3163" target="_blank" rel="noopener">GitHub</a>
+            <a class="action-link" href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile">
+          <img src="./authors/admin/profile.png" alt="Seung Hyun Lee">
+          <div class="profile-copy">
+            <p class="profile-name">Seung Hyun Lee</p>
+            <p class="profile-role">Ph.D. Candidate · Michigan CSE</p>
+            <p class="profile-contact">seungle [at] umich [dot] edu</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="research" class="section research-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Research direction</p>
+            <h2>From structured perception to physical interaction.</h2>
+          </div>
+          <p class="section-intro">
+            I study how models can discover useful structure in visual observations and represent interactions among
+            physical variables for robust perception and control.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <span class="research-index">01</span>
+            <h3>Structured Perception</h3>
+            <p>Organize scenes into regions, objects, and part hierarchies so visual predictions preserve physical structure.</p>
+            <span class="research-label">SHED · Perception</span>
+          </article>
+          <article class="research-card">
+            <span class="research-index">02</span>
+            <h3>Physical Interaction</h3>
+            <p>Make interactions among observable state variables explicit, compact, and useful for robust robot control.</p>
+            <span class="research-label">PRISM · Interaction</span>
+          </article>
         </div>
       </div>
-      
     </section>
-    <section id="news" class="section">
-      <h1>News</h1>
-      <ol class="news-list">
-        <li>
-          <div class="news-header">
-            <span class="news-title">PRISM is now available on arXiv</span>
-            <span class="news-date">Jul 2026</span>
-          </div>
-          <p>
-            Polynomial representations for interaction-structured motor control.
-            <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project page</a>
-            &middot;
-            <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
-          </p>
-        </li>
-        <li>
-          <div class="news-header">
-            <span class="news-title">Join Google DeepMind as 2026 Summer Intern</span>
-            <span class="news-date">Jan 2026</span>
-          </div>
-          <p> Starting in May 2026</p>
-        </li>
-        <li>
-          <div class="news-header">
-            <span class="news-title">Give a guest lecture on Depth Foundation Models at Umich</span>
-            <span class="news-date">Jan 2026</span>
-          </div>
-          <p> Depth Foundation Models: Depth Anything v2, Marigold, DUST3R, GeoDepth</p>
-        </li>
-        <li>
-          <div class="news-header">
-            <span class="news-title">Segment Hierarchy for Depth Estimation</span>
-            <span class="news-date">Oct 2025</span>
-          </div>
-          <p> Achieves PhD candidacy with this topic.</p>
-        </li>
-        
-      </ol>
-    </section>
-    <!-- Publications Section -->
+
     <section id="publications" class="section">
-      
-      
-      <h1>Publications</h1>
-
-      <h3>Robot Learning</h3>
-      <ul>
-        <li class="featured-publication">
-          <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">
-            <img src="https://raw.githubusercontent.com/lsh3163/prism/main/assets/prism-twitter-teaser.png"
-              alt="PRISM motivation, method, and robot-control results">
-          </a>
-          <div class="featured-publication-copy">
-            <p class="featured-publication-title">
-              <strong>PRISM: Polynomial Representations for Interaction-Structured Motor Control</strong>
-            </p>
-            <p><em>arXiv 2026</em></p>
-            <p>
-              PRISM makes polynomial interactions among observable physical
-              variables explicit, learnable, and compact for locomotion and
-              contact-rich manipulation.
-            </p>
-            <div class="project-buttons">
-              <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project</a>
-              <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
-              <a href="https://github.com/lsh3163/prism" target="_blank" rel="noopener">Code</a>
-            </div>
-            <p><strong>Authors:</strong> Seung Hyun Lee, Stella X. Yu</p>
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Selected research</p>
+            <h2>Structure across vision and action.</h2>
           </div>
-        </li>
-      </ul>
+          <p class="section-intro">
+            Two complementary directions: learning the structure of visual scenes and learning the structure of physical interactions.
+          </p>
+        </div>
 
-      <h3> 📚 Foundation Models</h3>
-      <ul>
-        <li>
-          <p>
-            <strong>SHED Light on Segmentation for Depth Estimation            </strong>
-          </p>
-          <p><em>Under review</em></p>
-          <p><strong>Authors:</strong> Coming Soon</p>
-        </li>
-
-      </ul>
-        
-      
-      <h3>⭐ Quality Signals</h3>
-      <ul>
-        <li>
-          <p>
-            <strong>Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</strong>
-            <span class="affiliation-text">(work done during an internship at Google Research)</span>
-            <span class="pub-links">
-              <a href="https://arxiv.org/pdf/2401.05675.pdf" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><strong><span style="color:red;">ECCV 2024 Oral (2.3%)</span></strong></p>
-          <p>This work introduces a novel multi-reward RL framework to optimize text-to-image generation, balancing different quality signals. </p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
-        </li>
-        <li>
-          <p>
-            <strong>Cropper: Vision-Language Model for Image Cropping through In-Context Learning</strong>
-            <span class="affiliation-text">(work done during an internship at Google Research)</span>
-            <span class="pub-links">
-              <a href="https://arxiv.org/pdf/2408.07790" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>CVPR 2025</em></p>
-          <p> VLM with in-context learning enhances free-form, subject-aware, aspect-ratio aware cropping, without training. </p>
-          <p><strong>Authors:</strong> Seung Hyun Lee*, Jijun Jiang*, Yiran Xu*, Zhuofang Li*, Junjie Ke, Yinxiao Li, Junfeng He, Steven Hickson, Katie Datsenko, Sangpil Kim, Ming-Hsuan Yang, Irfan Essa, Feng Yang</p>
-        </li>
-      </ul>
-
-      <h3>🎶 Sound-Guided Visual Synthesis</h3>
-      <ul>
-        <li>
-          <p>
-            <strong>Sound-Guided Semantic Image Manipulation</strong>
-            <span class="affiliation-text">(co-worked with NVIDIA)</span>
-            <span class="pub-links">
-              <a href="https://kuai-lab.github.io/cvpr2022sound/" title="Project" target="_blank" rel="noopener">
-                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-              </a>
-              <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" title="Code" target="_blank" rel="noopener">
-                <i class="fa fa-code" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>CVPR 2022</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Wonseok Roh, Wonmin Byeon, Sang Ho Yoon, Chanyoung Kim, Jinkyu Kim*, Sangpil Kim*</p>
-        </li>
-        <li>
-          <p>
-            <strong>Sound-Guided Semantic Video Generation</strong>
-            <span class="affiliation-text">(co-worked with NVIDIA)</span>
-            <span class="pub-links">
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-              <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" title="Dataset" target="_blank" rel="noopener">
-                <i class="fa fa-database" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>ECCV 2022</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Gyeongrok Oh, Wonmin Byeon, Chanyoung Kim, Won Jeong Ryoo, Sang Ho Yoon, Jihyun Bae, Jinkyu Kim*, Sangpil Kim*</p>
-        </li>
-        <li>
-          <p>
-            <strong>Robust Sound-Guided Image Manipulation</strong>
-            <span class="affiliation-text">(co-worked with NVIDIA)</span>
-            <span class="pub-links">
-              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>Neural Networks 2024</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee*, Hyung-gun Chi*, Gyeongrok Oh, Wonmin Byeon, Sang Ho Yoon, Hyunje Park, Wonjun Cho, Jinkyu Kim*, Sangpil Kim*</p>
-        </li>
-        <li>
-          <p>
-            <strong>Audio-guided implicit neural representation for local image stylization</strong>
-            <span class="affiliation-text">(co-worked with NVIDIA)</span>
-            <span class="pub-links">
-              <a href="https://i0.wp.com/kuaicv.com/wp-content/uploads/2023/01/3d8aa-2023-01-17-ec98a4ed9b84-1.05.00.png?resize=1574%2C452&ssl=1" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>Computational Visual Media 2024</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Chanyoung Kim, Wonmin Byeon, Sang Ho Yoon, Jinkyu Kim*, Sangpil Kim*</p>
-        </li>
-        <li>
-          <p>
-            <strong>Soundini: Sound-Guided Diffusion for Natural Video Editing</strong>
-            <span class="pub-links">
-              <a href="https://kuai-lab.github.io/soundini-gallery/" title="Project" target="_blank" rel="noopener">
-                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-              </a>
-              <a href="https://arxiv.org/abs/2304.06818" title="Paper" target="_blank" rel="noopener">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/kuai-lab/soundini-official" title="Code" target="_blank" rel="noopener">
-                <i class="fa fa-code" aria-hidden="true"></i>
-              </a>
-            </span>
-          </p>
-          <p><em>Arxiv</em></p>
-          <p><strong>Authors:</strong> Seung Hyun Lee, Sieun Kim, Innfarn Yoo, Feng Yang, Donghyeon Cho, Youngseo Kim, Huiwen Chang, Jinkyu Kim*, Sangpil Kim*</p>
-        </li>
-      </ul>
-    </section>
-    
-    <!-- Awards Section -->
-    <section id="awards" class="section">
-      <h1>Awards & Honors</h1>
-      <ul>
-        <li>Travel Grant for CVPR 2025 / ECCV 2024 from Google Research</li>
-        <li>Pytorch Open Source Contribution, Pytorch Tutorial Translation (lead menti) 2021</li>
-        <li>Google Developer Student Clubs – University of Seoul, Korea 2021</li>
-        <li>Software Maestro 11th – Best Software talent discovery program, Korea</li>
-      </ul>
-    </section>
-    
-    <!-- Activities Section -->
-    <section id="activities" class="section">
-      <h1>Academic Activities</h1>
-      <h3>Teaching</h3>
-      <ul>
-        <li>
-          [Fall 26] CSE 592: Foundations of Artificial Intelligence — Lecturer &amp; Graduate Student Instructor
-          <span class="pub-links">
-            <a href="https://gpoesia.com/teaching/cse592-fall26/" title="Course Website" target="_blank" rel="noopener">
-              <i class="fa fa-external-link" aria-hidden="true"></i>
+        <div class="project-grid">
+          <article class="project-card">
+            <a class="project-media prism-media" href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener" aria-label="Open the PRISM project page">
+              <img
+                src="https://raw.githubusercontent.com/lsh3163/lsh3163.github.io/master/prism/assets/prism/posters/libero-long-highlight.jpg"
+                alt="PRISM succeeds on a manipulation task where the baseline fails"
+                loading="lazy">
             </a>
-          </span>
-        </li>
-        <li>[Winter 26] CSE 598: 3D Visual Representation — Lecturer</li>
-        <li>[Winter 26] EECS 542 Guest Lecture on Depth Foundation Models </li>
-        <li>[Winter 26] EECS 442 GSI Computer Vision </li>
-        <li>[Spring 23] Machine Learning at Korea University</li>
-      </ul>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-topic">Physical interaction</span>
+                <span>arXiv 2026</span>
+              </div>
+              <h3>PRISM: Polynomial Representations for Interaction-Structured Motor Control</h3>
+              <p class="project-description">
+                PRISM makes polynomial interactions among observable physical variables explicit and learnable,
+                improving locomotion and contact-rich manipulation without adding sensors.
+              </p>
+              <p class="authors"><strong>Seung Hyun Lee</strong>, Stella X. Yu</p>
+              <ul class="tag-list" aria-label="PRISM topics">
+                <li>Robot learning</li>
+                <li>Physical interaction</li>
+                <li>VLA</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">Project</a>
+                <a href="https://arxiv.org/abs/2607.23473" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/lsh3163/prism" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-media" href="https://arxiv.org/abs/2601.22529" target="_blank" rel="noopener" aria-label="Open the SHED paper on arXiv">
+              <img
+                src="https://arxiv.org/html/2601.22529v1/fig1_2.png"
+                alt="SHED uses a learned segment hierarchy to produce structurally coherent dense predictions"
+                loading="lazy">
+            </a>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-topic">Structured perception</span>
+                <span>arXiv 2026</span>
+              </div>
+              <h3>SHED Light on Segmentation for Dense Prediction</h3>
+              <p class="project-description">
+                SHED learns a bidirectional hierarchy of segment tokens without segmentation supervision, producing
+                sharper depth boundaries, coherent scene structure, and stronger synthetic-to-real generalization.
+              </p>
+              <p class="authors"><strong>Seung Hyun Lee</strong>, Sangwoo Mo, Stella X. Yu</p>
+              <ul class="tag-list" aria-label="SHED topics">
+                <li>3D perception</li>
+                <li>Dense prediction</li>
+                <li>Segment hierarchy</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://arxiv.org/abs/2601.22529" target="_blank" rel="noopener">Paper</a>
+                <a href="https://arxiv.org/pdf/2601.22529" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
-  </div>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2026 Seung Hyun Lee. All rights reserved.</p>
-      <a href="#top">Back to top</a>
+
+    <section class="section earlier-work" aria-labelledby="earlier-work-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Earlier work</p>
+            <h2 id="earlier-work-title">Generative models &amp; multimodal perception.</h2>
+          </div>
+          <p class="section-intro">
+            Prior work on perceptual quality, vision-language models, and sound-guided synthesis informs my broader interest in how models discover and use structure.
+          </p>
+        </div>
+
+        <div class="publication-group">
+          <h3 class="publication-group-title">Generative models &amp; quality signals</h3>
+          <article class="publication-row">
+            <p class="publication-venue">ECCV 2024<br>Oral</p>
+            <div>
+              <h4 class="publication-title">Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</h4>
+              <p class="publication-note">Balances multiple perceptual reward signals to improve text-to-image generation. Work done at Google Research.</p>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
+              <div class="publication-links"><a href="https://arxiv.org/abs/2401.05675" target="_blank" rel="noopener">Paper</a></div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">CVPR 2025</p>
+            <div>
+              <h4 class="publication-title">Cropper: Vision-Language Model for Image Cropping through In-Context Learning</h4>
+              <p class="publication-note">Uses in-context learning for free-form, subject-aware, and aspect-ratio-aware image cropping. Work done at Google Research.</p>
+              <p class="publication-authors"><strong>Seung Hyun Lee*</strong>, Jijun Jiang*, Yiran Xu*, Zhuofang Li*, Junjie Ke, Yinxiao Li, Junfeng He, Steven Hickson, Katie Datsenko, Sangpil Kim, Ming-Hsuan Yang, Irfan Essa, Feng Yang</p>
+              <div class="publication-links"><a href="https://arxiv.org/abs/2408.07790" target="_blank" rel="noopener">Paper</a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="publication-group">
+          <h3 class="publication-group-title">Sound-guided visual synthesis</h3>
+          <article class="publication-row">
+            <p class="publication-venue">CVPR 2022</p>
+            <div>
+              <h4 class="publication-title">Sound-Guided Semantic Image Manipulation</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Wonseok Roh, Wonmin Byeon, Sang Ho Yoon, Chanyoung Kim, Jinkyu Kim*, Sangpil Kim*</p>
+              <div class="publication-links">
+                <a href="https://kuai-lab.github.io/cvpr2022sound/" target="_blank" rel="noopener">Project</a>
+                <a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lee_Sound-Guided_Semantic_Image_Manipulation_CVPR_2022_paper.html" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">ECCV 2022</p>
+            <div>
+              <h4 class="publication-title">Sound-Guided Semantic Video Generation</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Gyeongrok Oh, Wonmin Byeon, Chanyoung Kim, Won Jeong Ryoo, Sang Ho Yoon, Jihyun Bae, Jinkyu Kim*, Sangpil Kim*</p>
+              <div class="publication-links">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" target="_blank" rel="noopener">Paper</a>
+                <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" target="_blank" rel="noopener">Dataset</a>
+              </div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">Neural Networks<br>2024</p>
+            <div>
+              <h4 class="publication-title">Robust Sound-Guided Image Manipulation</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee*</strong>, Hyung-gun Chi*, Gyeongrok Oh, Wonmin Byeon, Sang Ho Yoon, Hyunje Park, Wonjun Cho, Jinkyu Kim*, Sangpil Kim*</p>
+              <div class="publication-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0893608024001953" target="_blank" rel="noopener">Paper</a></div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">CVM 2024</p>
+            <div>
+              <h4 class="publication-title">Audio-Guided Implicit Neural Representation for Local Image Stylization</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee*</strong>, Sieun Kim*, Wonmin Byeon, Gyeongrok Oh, Sumin In, Hyeongcheol Park, Sang Ho Yoon, Sung-Hee Hong, Jinkyu Kim, Sangpil Kim</p>
+              <div class="publication-links"><a href="https://link.springer.com/article/10.1007/s41095-024-0413-5" target="_blank" rel="noopener">Paper</a></div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">arXiv</p>
+            <div>
+              <h4 class="publication-title">Soundini: Sound-Guided Diffusion for Natural Video Editing</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Sieun Kim, Innfarn Yoo, Feng Yang, Donghyeon Cho, Youngseo Kim, Huiwen Chang, Jinkyu Kim*, Sangpil Kim*</p>
+              <div class="publication-links">
+                <a href="https://kuai-lab.github.io/soundini-gallery/" target="_blank" rel="noopener">Project</a>
+                <a href="https://arxiv.org/abs/2304.06818" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/kuai-lab/soundini-official" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section updates-section" aria-labelledby="updates-title">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Updates</p>
+            <h2 id="updates-title">Recent milestones.</h2>
+          </div>
+          <p class="section-intro">Research, internships, and academic milestones shaping the next stage of my work.</p>
+        </div>
+        <ol class="updates-list">
+          <li class="update-item">
+            <time datetime="2026-07">Jul 2026</time>
+            <div><strong>PRISM is available on arXiv.</strong><p>Polynomial representations for interaction-structured motor control.</p></div>
+          </li>
+          <li class="update-item">
+            <time datetime="2026-05">Summer 2026</time>
+            <div><strong>Research Intern at Google DeepMind.</strong><p>Robotics research internship.</p></div>
+          </li>
+          <li class="update-item">
+            <time datetime="2026-01">Jan 2026</time>
+            <div><strong>SHED is available on arXiv.</strong><p>Bidirectional segment hierarchies for structure-aware dense prediction.</p></div>
+          </li>
+          <li class="update-item">
+            <time datetime="2025-10">Oct 2025</time>
+            <div><strong>Advanced to Ph.D. candidacy.</strong><p>Thesis direction: segment hierarchy for depth estimation and structured visual representation.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="teaching" class="section">
+      <div class="container bottom-grid">
+        <div>
+          <h2 class="subsection-title">Teaching</h2>
+          <ul class="teaching-list">
+            <li class="teaching-item">
+              <span class="teaching-term">Fall 2026</span>
+              <div><p class="teaching-course">CSE 598: 3D Visual Representation</p><p class="teaching-role">Lecturer</p></div>
+            </li>
+            <li class="teaching-item">
+              <span class="teaching-term">Fall 2026</span>
+              <div>
+                <p class="teaching-course">CSE 592: Foundations of Artificial Intelligence</p>
+                <p class="teaching-role">Lecturer &amp; Graduate Student Instructor</p>
+                <a class="teaching-link" href="https://gpoesia.com/teaching/cse592-fall26/" target="_blank" rel="noopener">Course website</a>
+              </div>
+            </li>
+            <li class="teaching-item">
+              <span class="teaching-term">Winter 2026</span>
+              <div><p class="teaching-course">EECS 542 · Guest Lecture: Depth Foundation Models</p><p class="teaching-role">Guest Lecturer</p></div>
+            </li>
+            <li class="teaching-item">
+              <span class="teaching-term">Winter 2026</span>
+              <div><p class="teaching-course">EECS 442: Computer Vision</p><p class="teaching-role">Graduate Student Instructor</p></div>
+            </li>
+            <li class="teaching-item">
+              <span class="teaching-term">Spring 2023</span>
+              <div><p class="teaching-course">Machine Learning, Korea University</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <aside>
+          <h2 class="subsection-title">Honors &amp; Service</h2>
+          <ul class="honors-list">
+            <li>Google Research Travel Grants for CVPR 2025 and ECCV 2024</li>
+            <li>PyTorch open-source contribution and tutorial translation mentor, 2021</li>
+            <li>Google Developer Student Clubs, University of Seoul, 2021</li>
+            <li>Software Maestro 11th cohort</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Seung Hyun Lee. Visual &amp; Embodied Intelligence.</p>
+      <a href="#about">Back to top ↑</a>
     </div>
   </footer>
 </body>
