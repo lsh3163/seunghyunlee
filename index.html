@@ -230,8 +230,10 @@
       border-bottom: 1px solid var(--line);
     }
     .project-media.prism-media { background: #0f3029; }
-    .project-media img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 12px; }
-    .project-media.prism-media img { box-shadow: 0 16px 34px rgba(0, 0, 0, 0.23); }
+    .project-media img,
+    .project-media video { width: 100%; max-height: 250px; object-fit: contain; border-radius: 12px; }
+    .project-media.prism-media img,
+    .project-media.prism-media video { box-shadow: 0 16px 34px rgba(0, 0, 0, 0.23); }
     .project-content { padding: 28px; }
     .project-meta {
       display: flex;
@@ -639,13 +641,21 @@
       border-radius: 8px;
     }
 
-    .project-media img {
+    .project-media img,
+    .project-media video {
       max-height: 205px;
       border-radius: 5px;
     }
 
-    .project-media.prism-media img {
+    .project-media.prism-media img,
+    .project-media.prism-media video {
       box-shadow: none;
+    }
+
+    .project-media.prism-media video {
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      object-position: right center;
     }
 
     .project-content {
@@ -962,10 +972,15 @@
         <div class="project-grid">
           <article class="project-card">
             <a class="project-media prism-media" href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener" aria-label="Open the PRISM project page">
-              <img
-                src="https://raw.githubusercontent.com/lsh3163/lsh3163.github.io/master/prism/assets/prism/posters/libero-long-highlight.jpg"
-                alt="PRISM succeeds on a manipulation task where the baseline fails"
-                loading="lazy">
+              <video
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="https://lsh3163.github.io/prism/assets/prism/posters/bfm-fall-highlight.jpg"
+                aria-hidden="true">
+                <source src="https://lsh3163.github.io/prism/assets/prism/highlights/bfm-fall-recovery-prism-on-off.mp4" type="video/mp4">
+              </video>
             </a>
             <div class="project-content">
               <div class="project-meta">
@@ -1135,5 +1150,11 @@
       <a href="#about">Back to top ↑</a>
     </div>
   </footer>
+  <script>
+    const prismPreview = document.querySelector('.prism-media video');
+    if (prismPreview && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      prismPreview.play().catch(() => {});
+    }
+  </script>
 </body>
 </html>
