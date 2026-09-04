@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Seung Hyun Lee develops foundation models for visual and embodied intelligence, with a focus on structured perception and physical interaction.">
+  <meta name="description" content="Seung Hyun Lee is a Ph.D. candidate at the University of Michigan developing structured models for visual and embodied intelligence across perception, generative modeling, and robot learning.">
   <meta name="theme-color" content="#143a32">
   <title>Seung Hyun Lee — Visual &amp; Embodied Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -821,6 +821,41 @@
       line-height: 1.6;
     }
 
+    .latest-update {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 16px;
+      max-width: 730px;
+      margin-top: 27px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .latest-update time {
+      color: var(--forest-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .latest-update p {
+      color: #3f4b53;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .latest-update strong {
+      color: var(--ink);
+    }
+
+    .latest-update a {
+      margin-left: 5px;
+      color: var(--forest-light);
+      font-weight: 600;
+    }
+
     .action-row {
       gap: 18px;
     }
@@ -892,6 +927,11 @@
         font-size: 0.94rem;
       }
 
+      .latest-update {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
       .section {
         padding: 56px 0;
       }
@@ -939,13 +979,18 @@
         <div>
           <p class="eyebrow">Seung Hyun Lee · Ph.D. Candidate</p>
           <h1>Learning structure for visual and embodied intelligence.</h1>
-          <p class="hero-statement">I develop models that connect structured perception, generative modeling, and physical interaction.</p>
+          <p class="hero-statement">I develop structured models that connect perception, generative modeling, and physical interaction.</p>
           <p class="hero-summary">
             I am a Ph.D. candidate in Computer Science and Engineering at the
             <a href="https://cse.engin.umich.edu/" target="_blank" rel="noopener">University of Michigan</a>,
             advised by Prof. <a href="https://web.eecs.umich.edu/~stellayu/" target="_blank" rel="noopener">Stella X. Yu</a>.
-            I have interned at Google DeepMind and Google Research; at Google Research, I developed methods for improving
-            image generation and cropping using perceptual quality signals.
+            My research focuses on foundation models for visual and embodied intelligence, spanning structure-aware
+            perception, generative modeling, and robot learning.
+          </p>
+          <p class="hero-summary">
+            My research experience includes Google DeepMind, where I worked on embodied intelligence and robot learning,
+            and Google Research, where I developed methods for controllable image generation and image cropping.
+            Previously, I received my M.S. in Artificial Intelligence from Korea University.
           </p>
           <div class="action-row" aria-label="Profile links">
             <a class="action-link primary" href="cv/seunghyun_cv.pdf" target="_blank" rel="noopener">CV</a>
@@ -953,6 +998,10 @@
             <a class="action-link" href="https://github.com/lsh3163" target="_blank" rel="noopener">GitHub</a>
             <a class="action-link" href="https://www.linkedin.com/in/seunghyunlee-umich/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="action-link" href="mailto:seungle@umich.edu">Email</a>
+          </div>
+          <div class="latest-update" aria-label="Latest news">
+            <time datetime="2026-09">Sep 2026</time>
+            <p><strong>PRISM was accepted to CoRL 2026.</strong><a href="https://lsh3163.github.io/prism/" target="_blank" rel="noopener">View project ↗</a></p>
           </div>
         </div>
 
@@ -983,7 +1032,7 @@
             </a>
             <div class="project-content">
               <div class="project-meta">
-                <span>arXiv 2026</span>
+                <span>CoRL 2026 · Accepted</span>
               </div>
               <h3>PRISM: Polynomial Representations for Interaction-Structured Motor Control</h3>
               <p class="project-description">
@@ -1029,24 +1078,24 @@
     <section id="other-publications" class="section earlier-work" aria-labelledby="earlier-work-title">
       <div class="container">
         <div class="section-header">
-          <h2 id="earlier-work-title">Other Publications</h2>
+          <h2 id="earlier-work-title">Selected Publications</h2>
         </div>
 
         <div class="publication-group">
-          <article class="publication-row">
-            <p class="publication-venue">ECCV 2024<br>Oral</p>
-            <div>
-              <h4 class="publication-title">Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</h4>
-              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
-              <div class="publication-links"><a href="https://arxiv.org/abs/2401.05675" target="_blank" rel="noopener">Paper</a></div>
-            </div>
-          </article>
           <article class="publication-row">
             <p class="publication-venue">CVPR 2025</p>
             <div>
               <h4 class="publication-title">Cropper: Vision-Language Model for Image Cropping through In-Context Learning</h4>
               <p class="publication-authors"><strong>Seung Hyun Lee*</strong>, Jijun Jiang*, Yiran Xu*, Zhuofang Li*, Junjie Ke, Yinxiao Li, Junfeng He, Steven Hickson, Katie Datsenko, Sangpil Kim, Ming-Hsuan Yang, Irfan Essa, Feng Yang</p>
               <div class="publication-links"><a href="https://arxiv.org/abs/2408.07790" target="_blank" rel="noopener">Paper</a></div>
+            </div>
+          </article>
+          <article class="publication-row">
+            <p class="publication-venue">ECCV 2024<br>Oral</p>
+            <div>
+              <h4 class="publication-title">Parrot: Pareto-optimal Multi-Reward Reinforcement Learning Framework for Text-to-Image Generation</h4>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Yinxiao Li, Junjie Ke, Innfarn Yoo, Han Zhang, Jiahui Yu, Qifei Wang, Fei Deng, Glenn Entis, Junfeng He, Gang Li, Sangpil Kim, Irfan Essa, Feng Yang</p>
+              <div class="publication-links"><a href="https://arxiv.org/abs/2401.05675" target="_blank" rel="noopener">Paper</a></div>
             </div>
           </article>
         </div>
@@ -1068,7 +1117,7 @@
             <p class="publication-venue">ECCV 2022</p>
             <div>
               <h4 class="publication-title">Sound-Guided Semantic Video Generation</h4>
-              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Gyeongrok Oh, Wonmin Byeon, Chanyoung Kim, Won Jeong Ryoo, Sang Ho Yoon, Jihyun Bae, Jinkyu Kim*, Sangpil Kim*</p>
+              <p class="publication-authors"><strong>Seung Hyun Lee</strong>, Gyeongrok Oh, Wonmin Byeon, Chanyoung Kim, Won Jeong Ryoo, Sang Ho Yoon, Hyunjun Cho, Jihyun Bae, Jinkyu Kim*, Sangpil Kim*</p>
               <div class="publication-links">
                 <a href="https://link.springer.com/chapter/10.1007/978-3-031-19790-1_3" target="_blank" rel="noopener">Paper</a>
                 <a href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv" target="_blank" rel="noopener">Dataset</a>
@@ -1134,7 +1183,7 @@
             </li>
             <li class="teaching-item">
               <span class="teaching-term">Spring 2023</span>
-              <div><p class="teaching-course">Machine Learning, Korea University</p></div>
+              <div><p class="teaching-course">Machine Learning, Korea University</p><p class="teaching-role">Teaching Assistant</p></div>
             </li>
           </ul>
         </div>

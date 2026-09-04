@@ -1,2 +1,8 @@
 _site/
 
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.xdv
+*.synctex.gz
