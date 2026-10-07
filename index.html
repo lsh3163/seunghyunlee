@@ -658,6 +658,46 @@
       object-position: right center;
     }
 
+    .project-media.shed-media {
+      overflow: hidden;
+    }
+
+    .shed-preview-frame {
+      display: grid;
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      overflow: hidden;
+      border-radius: 5px;
+      background: #e8edf0;
+    }
+
+    .shed-preview-frame > img,
+    .shed-preview-frame > video {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      grid-area: 1 / 1;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .shed-preview-video {
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 120ms ease-out;
+    }
+
+    .shed-media.is-previewing .shed-preview-video {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shed-preview-video {
+        transition: none;
+      }
+    }
+
     .project-content {
       align-self: center;
       padding: 0;
@@ -1053,11 +1093,26 @@
           </article>
 
           <article class="project-card">
-            <a class="project-media" href="https://arxiv.org/abs/2601.22529" target="_blank" rel="noopener" aria-label="Open the SHED paper on arXiv">
-              <img
-                src="https://arxiv.org/html/2601.22529v1/fig1_2.png"
-                alt="SHED uses a learned segment hierarchy to produce structurally coherent dense predictions"
-                loading="lazy">
+            <a class="project-media shed-media" data-hover-preview href="https://arxiv.org/abs/2601.22529" target="_blank" rel="noopener" aria-label="Open the SHED paper on arXiv">
+              <span class="shed-preview-frame">
+                <img
+                  src="assets/shed/shed-thumbnail-poster.jpg"
+                  alt="SHED transforms an RGB image through a learned segment hierarchy into a depth prediction"
+                  width="960"
+                  height="480"
+                  loading="lazy">
+                <video
+                  class="shed-preview-video"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="assets/shed/shed-thumbnail-poster.jpg"
+                  tabindex="-1"
+                  aria-hidden="true">
+                  <source src="assets/shed/shed-thumbnail.mp4" type="video/mp4">
+                </video>
+              </span>
             </a>
             <div class="project-content">
               <div class="project-meta">
@@ -1207,6 +1262,97 @@
     if (prismPreview && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       prismPreview.play().catch(() => {});
     }
+
+    (() => {
+      const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const hoverCapability = window.matchMedia('(hover: hover) and (pointer: fine)');
+      const previewLinks = document.querySelectorAll('[data-hover-preview]');
+      let lastInput = 'keyboard';
+
+      window.addEventListener('keydown', () => {
+        lastInput = 'keyboard';
+      }, true);
+
+      window.addEventListener('pointerdown', (event) => {
+        lastInput = event.pointerType || 'pointer';
+      }, true);
+
+      previewLinks.forEach((link) => {
+        const video = link.querySelector('video');
+        if (!video) return;
+
+        let hovered = false;
+        let keyboardFocused = false;
+        let playRequest = 0;
+
+        const shouldPlay = () => !motionPreference.matches && (hovered || keyboardFocused);
+
+        const resetPreview = () => {
+          playRequest += 1;
+          video.pause();
+          try {
+            video.currentTime = 0;
+          } catch (_) {
+            // The poster remains visible if metadata has not loaded yet.
+          }
+          link.classList.remove('is-previewing');
+        };
+
+        const startPreview = () => {
+          if (!shouldPlay()) return;
+
+          const request = ++playRequest;
+          try {
+            video.currentTime = 0;
+          } catch (_) {
+            // Playback will still begin at the initial frame once ready.
+          }
+
+          Promise.resolve(video.play()).then(() => {
+            if (request === playRequest && shouldPlay()) {
+              link.classList.add('is-previewing');
+            }
+          }).catch(resetPreview);
+        };
+
+        link.addEventListener('mouseenter', () => {
+          if (!hoverCapability.matches) return;
+          hovered = true;
+          startPreview();
+        });
+
+        link.addEventListener('mouseleave', () => {
+          hovered = false;
+          if (!keyboardFocused) resetPreview();
+        });
+
+        link.addEventListener('focusin', () => {
+          const focusVisible = typeof link.matches === 'function' && link.matches(':focus-visible');
+          if (lastInput !== 'keyboard' && !focusVisible) return;
+          keyboardFocused = true;
+          startPreview();
+        });
+
+        link.addEventListener('focusout', () => {
+          keyboardFocused = false;
+          if (!hovered) resetPreview();
+        });
+
+        const handleMotionChange = () => {
+          if (motionPreference.matches) {
+            resetPreview();
+          } else if (shouldPlay()) {
+            startPreview();
+          }
+        };
+
+        if (typeof motionPreference.addEventListener === 'function') {
+          motionPreference.addEventListener('change', handleMotionChange);
+        } else {
+          motionPreference.addListener(handleMotionChange);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
